@@ -20,8 +20,9 @@ import biz.westpole.dto.LoginDto;
 @Controller
 public class MainController {
 	
-	public static String CURR_LOGIN_ID = null;
-
+	private static String USER_ID = "admin";
+	private static String PASSWORD = "password";
+	
 	@GetMapping("/")
 	public String main() {
 		return "westpole/contents/index.html";
@@ -30,84 +31,71 @@ public class MainController {
 	@GetMapping("/login")
 	public String login(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession(true);
-		String id = (String)session.getAttribute("westpole.login.id");
+		Cookie cookie[] = request.getCookies();
+		String id = null;
 		
-		// 이미 로그인한 경우 메인페이지 
-		if(id != null && id.equals("admin")) {
-			System.out.println("이미 로그인 상태");
-			return "redirect:/";
+		Cookie c;
+
+		if (cookie != null) {
+			for (int i = 0; i < cookie.length; i++) {
+			    c = cookie[i];
+			    if(c.getName().equalsIgnoreCase("westpoleid")) {
+			        id = c.getValue();
+			    	break;  
+			    }    
+			}
 		}
 		
-		return "westpole/contents/login.html";
+		// 이미 로그인한 경우 메인페이지 
+		if(id != null && id.equals(USER_ID)) {
+			System.out.println("이미 로그인 상태");
+			return "redirect:/toc";
+		}
+		
+		return "westpole/contents/login";
 	}
+		
 	
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
-		
-		HttpSession session = request.getSession(true);
-		String id = (String)session.getAttribute("westpole.login.id");
-		
-		if(id != null) {
 			
-			Cookie cookie = new Cookie("westpoleid", null);
-			cookie.setMaxAge(0);
-			cookie.setPath("/");
-			response.addCookie(cookie);
-			
-			session.removeAttribute("westpole.login.id");
-			CURR_LOGIN_ID = null;
-		}
+		Cookie cookie = new Cookie("westpoleid", null);
+		cookie.setDomain("westpole.biz");
+		cookie.setMaxAge(0);
+		cookie.setPath("/");
+		response.addCookie(cookie);
 		
-		return "westpole/contents/index.html";
+		return "westpole/contents/index";
 	}
 	
 	@PostMapping("/login/submit")
 	public String submit(HttpServletRequest request, HttpServletResponse response, LoginDto loginDto, Model model) {
 		
-		HttpSession session = request.getSession(true);
-		
 	
 		// todo: 아이디 패스워드 DB 데이터 비교하는 로직 추가
-		if( loginDto.getId().equals("admin") 
-				&& loginDto.getPassword().equals("xptmxm") ) {
+		if( loginDto.getId().equals(USER_ID) 
+				&& loginDto.getPassword().equals(PASSWORD) ) {
 			
-			Cookie cookie = new Cookie("westpoleid", "admin");
-			cookie.setMaxAge(86400);
+			Cookie cookie = new Cookie("westpoleid", loginDto.getId());
+			cookie.setDomain("westpole.biz");
+			cookie.setMaxAge(60);
 			cookie.setPath("/");
 			response.addCookie(cookie);
 			
-			System.out.println("로그인 성공");
-			
-			session.setAttribute("westpole.login.id", "admin");
-			
-			CURR_LOGIN_ID = "admin";
-			
-			return "redirect:/";
+			return "redirect:/toc";
 			
 		} else {
 			
-			model.addAttribute("message", "Login fail!");
+			model.addAttribute("message", "Login fail. Check your account.");
 			System.out.println("실패");
 			
-			return "westpole/contents/login.html";
+			return "westpole/contents/login";
 		}
-		
 	}
 	
-	@ResponseBody
-	@CrossOrigin(origins = {"http://localhost:3000"}) 
-	@GetMapping("/login/state")
-	public String state(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession(true);
-		String id = (String)session.getAttribute("westpole.login.id");
-		
-		System.out.println( "CURR_LOGIN_ID = " + CURR_LOGIN_ID );
-		
-		System.out.println("api 요청");
-
-		
-		return "{ \"westpoleid\" :\"" + CURR_LOGIN_ID + "\"}";
+	@GetMapping("/toc")
+	public String wemsToc() {
+		return "westpole/contents/toc";	
 	}
+	
 }
