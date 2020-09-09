@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+<link th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/animate.min.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/style-responsive.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/theme/default.css}" id="theme" rel="stylesheet" />
+<!-- ================== END BASE CSS STYLE ================== -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script th:href="@{/assets/plugins/pace/pace.min.js}"></script>
+<!-- ================== END BASE JS ================== -->
+
+<!-- ================== BEGIN BASE JS ================== -->
+<script th:src="@{/assets/plugins/jquery/jquery-1.9.1.min.js}"></script>
+<script th:src="@{/assets/plugins/jquery/jquery-migrate-1.1.0.min.js}"></script>
+<script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<!--[if lt IE 9]>
+	<script src="assets/crossbrowserjs/html5shiv.js"></script>
+	<script src="assets/crossbrowserjs/respond.min.js"></script>
+	<script src="assets/crossbrowserjs/excanvas.min.js"></script>
+<![endif]-->
+<script th:src="@{/assets/plugins/jquery-cookie/jquery.cookie.js}"></script>
+<script th:src="@{/assets/plugins/scrollMonitor/scrollMonitor.js}"></script>
+<script th:src="@{/assets/js/apps.js}"></script>
+<!-- ================== END BASE JS ================== -->
+
+<script>    
+    $(document).ready(function() {
+        App.init();
+        
+    });
+    
+    function movePage(uri, queryString) {
+		location.href = uri + queryString;
+	}
+</script>
+	

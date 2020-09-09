@@ -1039,7 +1039,13 @@ body.page-navbar-fixed-top-sm {
   0% { transform: rotate(0deg); transform: rotate(0deg); }
   100% { transform: rotate(360deg); transform: rotate(360deg); }
 }
-
+.pace-top .pace:before,
+.pace-top .pace-progress {
+    top: 0;
+}
+.pace-top .pace .pace-activity {
+    top: 11px;
+}
 
 
 /* -------------------------------
@@ -1482,8 +1488,10 @@ a.text-white:focus {
 /* 16.1 Component - Button */
 
 .btn {
-    padding: 15px 30px;
-    font-size: 14px;
+    /*padding: 15px 30px;
+    font-size: 14px;*/
+    padding: 10px 15px;
+    font-size: 12px;
     font-weight: 500;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -2699,6 +2707,7 @@ legend {
     color: #242a30;
     font-weight: 600;
     border-bottom: 2px solid #e2e7eb !important;
+    text-align: center;
 }
 .table > thead > tr > th, 
 .table > tbody > tr > th, 
@@ -2816,6 +2825,10 @@ legend {
     border-color: #e2e7e9;
 }
 
+.table > tbody > tr > td.subject {
+	min-width: 300px;
+	text-align:left;
+}
 
 /* 16.21 Component - Well */
 
@@ -2967,3 +2980,40 @@ a.list-group-item.active:focus {
 .theme-panel.active {
     right: 0;
 }
+
+
+/* 6.10 Page - 404 Error Page */
+
+.error {
+    margin: 0 auto;
+    text-align: center;
+}
+.error-code,
+.error-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateZ(0);
+}
+.error-code {
+    bottom: 60%;
+    color: #2d353c;
+    font-size: 96px;
+    line-height: 100px;
+}
+.error-content {
+    top: 40%;
+    bottom: 0;
+    padding-top: 15px;
+    background: #2d353c;
+}
+.error-message {
+    color: #fff;
+    font-size: 24px;
+}
+.error-desc {
+    font-size: 12px;
+    color: #647788;
+}
+
+

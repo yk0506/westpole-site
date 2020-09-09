@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="biz.westpole.site.mapper.BoardMapper">
+ 	<select id="selectAllBulletin" resultType="boardDTO">
+ 		SELECT 	bltnNo, boardId, subject, contents, userNick, userId, regDate
+		FROM 	public.bulletin
+		WHERE 	boardId = 1
+		ORDER BY bltnNo DESC
+ 	</select>
+ 	
+ 	<select id="selectBulletinList" parameterType="boardDTO" resultType="boardDTO">
+ 		SELECT 	bltnNo, boardId, subject, contents, userNick, userId, regDate
+		FROM 	public.bulletin
+		WHERE 	boardId = 1
+		ORDER BY bltnNo DESC
+		LIMIT	#{recordsPerPage } OFFSET #{paginationInfo.firstRecordIndex }
+ 	</select>
+ 	
+ 	<select id="getBulletinTotalCount" resultType="int">
+ 		SELECT 	COUNT(*)
+ 		FROM 	Bulletin
+ 		WHERE 	boardId = 1
+ 	</select>
+ 	
+ 	<select id="getBulletin" parameterType="int" resultType="boardDTO">
+ 		SELECT 	bltnNo, boardId, subject, contents, userNick, userId, regDate, password
+		FROM 	public.bulletin
+		WHERE 	boardId = 1
+		AND		bltnNo = #{bltnNo}
+ 	</select>
+ 	
+ 	<insert id="insertBulletin" parameterType="boardDTO">
+		INSERT INTO Bulletin (
+			bltnNo, boardId, subject, contents, userNick, userId, regDate, password
+		) VALUES (
+			  nextval('bulletin_bltnno_seq')
+			, 1
+			, #{subject }
+			, #{contents }
+			, #{userNick }
+			, #{userNick }
+			, CURRENT_TIMESTAMP
+			, #{password }
+		)
+	</insert>
+	<update id="updateBulletin" parameterType="boardDTO">
+		UPDATE public.bulletin
+			SET bltnno=#{bltnNo }, 
+			boardid=1, 
+			subject=#{subject }, 
+			contents=#{contents }, 
+			usernick=#{userNick }, 
+			userid=#{userNick }
+		WHERE bltnNo = #{bltnNo }
+	</update>
+	<delete id="deleteBulletin" parameterType="boardDTO">
+		DELETE FROM public.bulletin
+		WHERE bltnNo = #{bltnNo }
+	</delete>
+ </mapper>

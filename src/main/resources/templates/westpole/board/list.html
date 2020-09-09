@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Westpole Electronic Inc.</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<th:block th:replace="westpole/fragments/header"></th:block>
+</head>
+<body data-spy="scroll" data-target="#header-navbar" data-offset="51">
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade">
+    
+    	<th:block th:replace="westpole/fragments/navbar"></th:block>
+        
+        
+        <div class="content" style="padding-top:100px;">
+	        <div class="container" data-animation="true" data-animation-type="fadeInDown">
+	        	<h2 class="content-title">BOARD</h2>
+	  			<div class="row">
+	        	<table class="table text-center">
+	        		<thead>
+	        			<tr>	
+		        			<th>No.</th>
+		        			<th>Subject</th>
+		        			<th>Writer</th>
+		        			<th>Date</th>
+		        		</tr>
+	        		</thead>
+	        		<tbody>
+	        			<tr th:each="bltn : ${bltnList}">
+	        				
+	        				<td th:text="${bltn.bltnNo}"></td>
+	        				<td class="subject"><a th:href="'/board/read/'+${bltn.bltnNo}+'?currentPageNo='+${params.currentPageNo }"><span th:text="${bltn.subject}"></span></a></td>
+	        				<td th:text="${bltn.userNick}"></td>
+	        				<td th:text="${bltn.regDate}"></td>
+	        			</tr>
+	        		</tbody>
+	        	</table>
+	        	
+	        	<div style="float:right;">
+	        		<button type="button" class="btn btn-primary btn-xs" onclick="movePage('/board/write', '')">WRITE</button>
+        		</div>
+	        	
+	        	<nav th:fragment="pagination" th:if="${params != null and params.paginationInfo.totalRecordCount > 0}" th:object="${params.paginationInfo}" th:with="info=${params.paginationInfo}" aria-label="Page navigation" class="text-center">
+					<ul class="pagination">
+						<li th:if="*{hasPreviousPage == true}" th:onclick="movePage([[ ${#request.requestURI} ]], [[ ${params.makeQueryString(1)} ]])">
+							<a href="javascript:void(0)" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+						</li>
+						<li th:if="*{hasPreviousPage == true}" th:onclick="movePage([[ ${#request.requestURI} ]], [[ ${params.makeQueryString(info.firstPage - 1)} ]])">
+							<a href="javascript:void(0)" aria-label="Previous"><span aria-hidden="true">&lsaquo;</span></a>
+						</li>
+						<li th:each="pageNo : *{#numbers.sequence( firstPage, lastPage )}" th:class="${pageNo == params.currentPageNo} ? 'active'">
+							<a href="javascript:void(0)" th:text="${pageNo}" th:onclick="movePage([[ ${#request.requestURI} ]], [[ ${params.makeQueryString(pageNo)} ]])"></a>
+						</li>
+						<li th:if="*{hasNextPage == true}" th:onclick="movePage([[ ${#request.requestURI} ]], [[ ${params.makeQueryString(info.lastPage + 1)} ]])">
+							<a href="javascript:void(0)" aria-label="Next"><span aria-hidden="true">&rsaquo;</span></a>
+						</li>
+						<li th:if="*{hasNextPage == true}" th:onclick="movePage([[ ${#request.requestURI} ]], [[ ${params.makeQueryString(info.totalPageCount)} ]])">
+							<a href="javascript:void(0)" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+						</li>
+					</ul>
+				</nav>
+				
+				
+	        	</div>
+	        </div>
+        </div>
+        
+        <th:block th:replace="westpole/fragments/footer"></th:block>
+	</div>
+
+	
+</body>
+</html>

@@ -194,7 +194,7 @@ var App = function () {
 		    handleHomeContentHeight();
 		    handleHeaderNavigationState();
 		    handlePageContainerShow();
-		    handlePaceLoadingPlugins();
+		    //handlePaceLoadingPlugins();
 		    handlePageScrollContentAnimation();
 		    handleHeaderScrollToAction();
             handleTooltipActivation();

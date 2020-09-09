@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Westpole Electronic Inc.</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<th:block th:replace="westpole/fragments/header"></th:block>
+	
+	<script type="text/javascript" th:src="@{/assets/plugins/se2/js/service/HuskyEZCreator.js }" charset="utf-8"></script>
+	
+</head>
+<body data-spy="scroll" data-target="#header-navbar" data-offset="51">
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade">
+    
+    	<th:block th:replace="westpole/fragments/navbar"></th:block>
+        
+        <div class="content" style="padding-top:100px;">
+	        <div class="container" data-animation="true" data-animation-type="fadeInDown">
+	        	<h2 class="content-title">BOARD</h2>
+	  			<div class="row">
+	  				<form name="writeForm" id="writeForm" action="/board/write" method="post">
+		        	<table class="table">
+		        		<tr>
+		        			<th class="width-150">Writer</th>
+		        			<td><input type="text" name="userNick" class="form-control width-150" /></td>
+		        		</tr>
+		        		<tr>
+		        			<th class="width-150">Subject</th>
+		        			<td><input type="text" name="subject" class="form-control" /></td>
+		        			
+		        		</tr>
+		        		<tr>	
+		        			<th class="width-150">Contents</th>
+		        			<td colspan="3">
+		        				<div style="padding:10px; z-index:0;">
+		        				<textarea name="contents" id="contents" rows="10" class="form-control"></textarea>
+		        				</div>
+		        			</td>
+		        		</tr>
+		        		<tr>
+		        			<th class="width-150">Password</th>
+		        			<td>
+		        				<input type="number" name="password" class="form-control width-100" />
+		        				* Passwords can only be numeric.
+		        			</td>
+		        		</tr>
+		        	</table>
+		        	
+		        	<div style="float:right;">
+		        		<button type="button" class="btn btn-default btn-sm" th:onclick="movePage('/board/list', '')">LIST</button>
+		        		<button type="button" class="btn btn-primary btn-sm" id="submitBtn">WRITE</button>
+	        		</div>
+	        		
+	        		</form>
+	        	</div>
+	        </div>
+        </div>
+        
+      	<th:block th:replace="westpole/fragments/footer"></th:block>
+	</div>
+
+	<script type="text/javascript">
+	
+	
+		var oEditors = [];
+		 nhn.husky.EZCreator.createInIFrame({
+		 oAppRef: oEditors,
+		 elPlaceHolder: "contents",
+		 sSkinURI: "/assets/plugins/se2/SmartEditor2Skin.html",
+		 fCreator: "createSEditor2"
+		});
+		 
+		 $(document).on('click', '#submitBtn', function() {
+			 
+			var form = this.form;
+			oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+			
+			if(validate(form)) {
+				
+				try {
+					form.submit();
+				 } catch(e) {}
+			} 
+			 
+		 });
+		 
+		 function validate(form) {
+			 
+			if(form.userNick.value == '') {
+				alert("Writer can not be empty.");
+				return false;
+			}
+			
+			if(form.subject.value == '') {
+				alert("Subject can not be empty.");
+				return false;
+			}
+			
+			if(form.contents.value == '' || form.contents.value == '<p><br></p>') {
+				alert("Contents can not be empty.");
+				return false;
+			}
+			
+			if(form.password.value == '') {
+				alert("Password can not be empty.");
+				return false;
+			}
+			
+			return true;
+		 }
+		 
+	</script>
+</body>
+</html>
+

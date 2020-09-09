@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>Westpole Electronic Inc.</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<th:block th:replace="westpole/fragments/header"></th:block>
+	
+</head>
+<body class="pace-top">
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade">
+	    <!-- begin error -->
+        <div class="error">
+            <div class="error-code m-b-10"><span th:text="${code }"></span> <i class="fa fa-warning"></i></div>
+            <div class="error-content">
+                <div class="error-message">Error Occured!</div>
+                <div class="error-desc m-b-20">
+                    <span th:text="${msg }"></span>
+                </div>
+                <div>
+                    <a href="/" class="btn btn-success">Go Back to Home Page</a>
+                </div>
+            </div>
+        </div>
+        <!-- end error -->
+    </div>
+
+</body>
+</html>
+

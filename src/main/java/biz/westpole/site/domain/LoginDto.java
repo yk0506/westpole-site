@@ -1,4 +1,4 @@
-package biz.westpole.dto;
+package biz.westpole.site.domain;
 
 public class LoginDto {
 

@@ -1,4 +1,4 @@
-package biz.westpole.controller;
+package biz.westpole.site.controller;
 
 import java.net.http.HttpRequest;
 
@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,18 +16,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import biz.westpole.dto.LoginDto;
+import biz.westpole.site.domain.LoginDto;
 
 
 @Controller
 public class MainController {
-	
+
 	private static String USER_ID = "admin";
 	private static String PASSWORD = "password";
+
+	private Logger log = LoggerFactory.getLogger(MainController.class);
 	
 	@GetMapping("/")
 	public String main() {
-		return "westpole/contents/index.html";
+		return "westpole/contents/index";
 	}
 	
 	@GetMapping("/login")
@@ -48,7 +52,7 @@ public class MainController {
 		
 		// 이미 로그인한 경우 메인페이지 
 		if(id != null && id.equals(USER_ID)) {
-			System.out.println("이미 로그인 상태");
+			log.debug("이미 로그인 상태");
 			return "redirect:/toc";
 		}
 		
@@ -78,7 +82,7 @@ public class MainController {
 			
 			Cookie cookie = new Cookie("westpoleid", loginDto.getId());
 			cookie.setDomain("westpole.biz");
-			cookie.setMaxAge(60);
+			cookie.setMaxAge(3600);
 			cookie.setPath("/");
 			response.addCookie(cookie);
 			
@@ -87,7 +91,7 @@ public class MainController {
 		} else {
 			
 			model.addAttribute("message", "Login fail. Check your account.");
-			System.out.println("실패");
+			log.debug("실패");
 			
 			return "westpole/contents/login";
 		}
