@@ -25,11 +25,13 @@
 	        <div class="container" data-animation="true" data-animation-type="fadeInDown">
 	        	<h2 class="content-title">BOARD</h2>
 	  			<div class="row">
+	  			
 	  				<form name="writeForm" id="writeForm" action="/board/write" method="post">
+	  				<input type="hidden" name="userId" th:value="${#authentication.name }" />
 		        	<table class="table">
 		        		<tr>
 		        			<th class="width-150">Writer</th>
-		        			<td><input type="text" name="userNick" class="form-control width-150" /></td>
+		        			<td><input type="text" name="userNick" th:value="${#authentication.principal.nickname }" class="form-control width-150" /></td>
 		        		</tr>
 		        		<tr>
 		        			<th class="width-150">Subject</th>
@@ -42,13 +44,6 @@
 		        				<div style="padding:10px; z-index:0;">
 		        				<textarea name="contents" id="contents" rows="10" class="form-control"></textarea>
 		        				</div>
-		        			</td>
-		        		</tr>
-		        		<tr>
-		        			<th class="width-150">Password</th>
-		        			<td>
-		        				<input type="number" name="password" class="form-control width-100" />
-		        				* Passwords can only be numeric.
 		        			</td>
 		        		</tr>
 		        	</table>
@@ -105,11 +100,6 @@
 			
 			if(form.contents.value == '' || form.contents.value == '<p><br></p>') {
 				alert("Contents can not be empty.");
-				return false;
-			}
-			
-			if(form.password.value == '') {
-				alert("Password can not be empty.");
 				return false;
 			}
 			

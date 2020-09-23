@@ -11,13 +11,27 @@
 	<meta content="" name="author" />
 	<script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 	
-	<script>
-
-	$(document).ready(function() {
-		window.location.href="http://toc.westpole.biz"
-	});
+	<script th:inline="javascript">
+	
+	    /*<![CDATA[*/
+	    	
+	    $(document).ready(function() {
+	    	
+	    	var authenticated = [[ ${ #authorization.expr( 'isAuthenticated()') }]];
+	    	
+			if(authenticated) {
+				location.href="http://toc.westpole.biz";
+			} else {
+				location.href="/login";
+			}
+	    	
+	    });
+	    /*]]>*/
+	    
 	</script>
 	
 </head>
-<body></body>
+<body>
+
+</body>
 </html>

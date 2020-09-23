@@ -48,6 +48,9 @@ Website: http://www.seantheme.com/color-admin-v1.8/frontend/
     .about-author .author .image {
         width: 80px;
     }
+    .gallery .image {
+        width: 33%;
+    }
 }
 @media (max-width: 767px) {
     .header.navbar .navbar-nav > li > a {
@@ -117,5 +120,27 @@ Website: http://www.seantheme.com/color-admin-v1.8/frontend/
     .pricing-table .highlight {
         margin-top: 0 !important;
         padding: 10px !important;
+    }
+    .table-responsive .table > thead > tr > th, 
+    .table-responsive .table > tbody > tr > th, 
+    .table-responsive .table > tfoot > tr > th, 
+    .table-responsive .table > thead > tr > td, 
+    .table-responsive .table > tbody > tr > td, 
+    .table-responsive .table > tfoot > tr > td {
+        white-space: nowrap;
+    }
+    .login .login-header,
+    .login-content {
+        width: 100% !important;
+    }
+    .login {
+        margin: 108px 0;
+    }
+    .login .login-header {
+        left: 0;
+        margin: 0;
+    }
+    .gallery .image {
+        width: 100%;
     }
 }

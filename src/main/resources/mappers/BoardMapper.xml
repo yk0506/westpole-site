@@ -40,9 +40,9 @@
 			, #{subject }
 			, #{contents }
 			, #{userNick }
-			, #{userNick }
+			, #{userId }
 			, CURRENT_TIMESTAMP
-			, #{password }
+			, 0
 		)
 	</insert>
 	<update id="updateBulletin" parameterType="boardDTO">
@@ -51,8 +51,7 @@
 			boardid=1, 
 			subject=#{subject }, 
 			contents=#{contents }, 
-			usernick=#{userNick }, 
-			userid=#{userNick }
+			usernick=#{userNick }
 		WHERE bltnNo = #{bltnNo }
 	</update>
 	<delete id="deleteBulletin" parameterType="boardDTO">

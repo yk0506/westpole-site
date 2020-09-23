@@ -11,6 +11,18 @@
 	<meta content="" name="author" />
 	
 	<th:block th:replace="westpole/fragments/header"></th:block>
+	
+	<style>
+		.btn-outlink { 
+			width:100%; 
+			height: 80px; 
+			vertical-align: middle;
+			font-weight: normal;
+		    color: #333;
+		    background: #fff;
+		    border-color: #e2e7eb;
+		}
+	</style>
 </head>
 <body data-spy="scroll" data-target="#header-navbar" data-offset="51">
     <!-- begin #page-container -->
@@ -28,10 +40,9 @@
             <!-- begin container -->
             <div class="container home-content">
                 <h1>Westpole Electric Inc.</h1>
-
-                <h3>
+                <h4>
                     Providing Total EPC/O&M, <br />Solution and Service for Commercial & Industrial Facilities
-                </h3>
+                </h4>
             </div>
             <!-- end container -->
         </div>
@@ -43,10 +54,12 @@
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">About Us</h2>
                 <p class="content-desc">
-                    Providing Total EPC/O&M, Solution and Service for Commercial & Industrial Facilities
                 </p>
                 <!-- begin row -->
                 <div class="row">
+                	<div style="text-align:center; padding-bottom:30px; ">
+                		<img th:src="@{/assets/img/license.png }" style="width:100%; max-width:600px;"/>
+                	</div>
                     <!-- begin col-4 -->
                     <div class="col-md-6 col-sm-6">
                         <div class="service">
@@ -77,7 +90,7 @@
                             <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-tachometer"></i></div>
                             <div class="info">
                                 <h4 class="title">Energy as a Service</h4>
-                                <p class="desc">WEMSTM (Westpole Energy Management System) based Cloud EaaS (Energy as a Service) Platform</p>
+                                <p class="desc">WEMS™ (Westpole Energy Management System) based Cloud EaaS (Energy as a Service) Platform</p>
                             </div>
                         </div>
                     </div>
@@ -88,7 +101,7 @@
                             <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-database"></i></div>
                             <div class="info">
                                 <h4 class="title">Solar/Storage Integration</h4>
-                                <p class="desc">WEMSTM, based DER (Solar/ ESS) Integration & Operation</p>
+                                <p class="desc">WEMS™ based DER (Solar/ ESS) Integration & Operation</p>
                             </div>
                         </div>
                     </div>
@@ -111,7 +124,7 @@
                     <!-- begin col-3 -->
                     <div class="col-md-6 col-sm-6 milestone-col">
                         <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="3860000">3,860,000</div>
+                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="3860000">$ 3,860,000</div>
                             <div class="title">2019 Revenue</div>
                         </div>
                     </div>
@@ -119,7 +132,7 @@
                     <!-- begin col-3 -->
                     <div class="col-md-6 col-sm-6 milestone-col">
                         <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="4300000">4,300,000</div>
+                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="4300000">$ 4,300,000</div>
                             <div class="title">2020 Order</div>
                         </div>
                     </div>
@@ -136,7 +149,7 @@
         <div id="work" class="content bg-black-darker has-bg" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
-                <h2 class="content-title">work</h2>
+                <h2 class="content-title">Business</h2>
         
                 <!-- begin row -->
                 <div class="row row-space-10">
@@ -179,7 +192,7 @@
                                 <img src="assets/img/wp-work-03.png" alt="Work 3" />
                             </div>
                             <div class="desc">
-                                <span class="desc-text">Manufacturing System Installation</span>
+                                <span class="desc-text">HVAC Installation & Commissioning</span>
                             </div>
                         </div>
                         <!-- end work -->
@@ -194,7 +207,7 @@
                                 <img src="assets/img/wp-work-04.png" alt="Work 4" />
                             </div>
                             <div class="desc">
-                                <span class="desc-text">Electric System O&M</span>
+                                <span class="desc-text">Manufacturing System Installation</span>
                             </div>
                         </div>
                         <!-- end work -->
@@ -209,7 +222,7 @@
                                 <img src="assets/img/wp-work-05.png" alt="Work 5" />
                             </div>
                             <div class="desc">
-                                <span class="desc-text">Electric System Field Works</span>
+                                <span class="desc-text">Electric System O&M</span>
                             </div>
                         </div>
                         <!-- end work -->
@@ -236,10 +249,10 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <img src="assets/img/wp-work-07.png" alt="Work 7" />
+                                <img src="assets/img/work-07.png" alt="Work 7" />
                             </div>
                             <div class="desc">
-                                <span class="desc-text">WEMS™ based TOC (Total Operation Center)</span>
+                                <span class="desc-text">Auto demand Response  Implementation</span>
                             </div>
                         </div>
                         <!-- end work -->
@@ -251,10 +264,130 @@
                         <!-- begin work -->
                         <div class="work">
                             <div class="image">
-                                <img src="assets/img/wp-work-08.png" alt="Work 8" />
+                                <img src="assets/img/work-08.png" alt="Work 8" />
                             </div>
                             <div class="desc">
-                                <span class="desc-text">WEMS™ based TOC (Total Operation Center)</span>
+                                <span class="desc-text">Solar/ESS Integration & Commissioning</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-09.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">Energy Efficiency HVAC</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-10.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">Energy Efficiency LED Lighting</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-11.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">Automatic Demand Response</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-12.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">DER Integration</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-13.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">Microgrids</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-14.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">Smart City</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-15.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">Westpole Total Operation Center for Virtual Power Plant</span>
+                            </div>
+                        </div>
+                        <!-- end work -->
+                    </div>
+                    <!-- end col-3 -->
+                    
+                    <!-- begin col-3 -->
+                    <div class="col-md-3 col-sm-6">
+                        <!-- begin work -->
+                        <div class="work">
+                            <div class="image">
+                                <img src="assets/img/work-16.png" alt="Work " />
+                            </div>
+                            <div class="desc">
+                                <span class="desc-text">Innovative Technology Convergence Platform</span>
                             </div>
                         </div>
                         <!-- end work -->
@@ -267,23 +400,147 @@
         </div>
         <!-- end #work -->
         
-        <!-- begin #client -->
-        <div id="client" class="content">
+        <!-- begin #product -->
+        <div id="product" class="content">
             <!-- begin content-bg -->
             <!-- end content-bg -->
             <!-- begin container -->
             <div class="container">
-                <h2 class="content-title">Our Clients</h2>
-                <!-- begin carousel -->
-                <div class="content-desc">
-                	<div class="image">
-                    	<img src="assets/img/clients.png" alt="clients" style="max-width:100%;" />
-					</div>
-                </div>
+                <h2 class="content-title">Our Products</h2>
+                <div id="gallery" class="gallery">
+	                <div class="image gallery-group-1">
+	                    <div class="image-inner">
+	                        <a href="assets/img/product-01-1.png" data-lightbox="gallery-group-1">
+	                            <img src="assets/img/product-01-1-thumb.png" alt="" />
+	                        </a>
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title">All-in-One ESS (WEMS™ Inside)</h5>
+	                        <div class="desc">
+	                            CSIP/SunSpec/UL1741SA Certified. CA Rule 21 Compliant for Grid Interconnection. Basic Module 90kW /360kWh.
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="image gallery-group-1">
+	                     <div class="image-inner">
+	                        <a href="assets/img/product-02-1.png" data-lightbox="gallery-group-1">
+	                            <img src="assets/img/product-02-1-thumb.png" alt="" />
+	                        </a>
+	                        
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title" title="Open Architecture Multi-Layer Platform">Lithium Ion Battery System</h5>
+	                        <div class="desc">
+	                            INCELL's Energy Storage System (ESS) uses Samsung SDI's high-performance ESS dedicated cell to ensure high efficiency, long life and excellent safety.
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="image gallery-group-1">
+	                     <div class="image-inner">
+	                        <a href="assets/img/product-03.jpg" data-lightbox="gallery-group-1">
+	                            <img src="assets/img/product-03-thumb.jpg" alt="" />
+	                        </a>
+	                        
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title" title="Open Architecture Multi-Layer Platform">Open Architecture Multi-Layer Platform</h5>
+	                        <div class="desc">
+	                            
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="image gallery-group-1">
+	                     <div class="image-inner">
+	                        <a href="assets/img/product-05.png" data-lightbox="gallery-group-1">
+	                            <img src="assets/img/product-05.png" alt="" />
+	                        </a>
+	                        
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title">WEMS™ TOC</h5>
+	                        <div class="desc">
+	                            
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
             </div>
             <!-- end containter -->
         </div>
-        <!-- end #client -->
+        <!-- end #product -->
+        
+ 
+        <!-- begin #solution -->
+        <div id="solution" class="content">
+            <!-- begin content-bg -->
+            <!-- end content-bg -->
+            <!-- begin container -->
+            <div class="container">
+                <h2 class="content-title">Our Solutions</h2>
+                <div id="gallery2" class="gallery">
+	                <div class="image gallery-group-2">
+	                    <div class="image-inner">
+	                        <a href="assets/img/solution-04.png" data-lightbox="gallery-group-2">
+	                            <img src="assets/img/solution-04-thumb.png" alt="" />
+	                        </a>
+	                        
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title">Energy as a Service Platform</h5>
+	                        <div class="desc">
+	                            Innovative Technology + Integrated Demand Side Management + Improved Business Model
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="image gallery-group-1">
+	                     <div class="image-inner">
+	                        <a href="assets/img/solution-01.png" data-lightbox="gallery-group-2">
+	                            <img src="assets/img/solution-01-thumb.png" alt="" />
+	                        </a>
+	                        
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title">Innovative Technology Convergence</h5>
+	                        <div class="desc">
+	                           Vendor Neutral DER  Design and Integration and Optimal Control with Machine Learning AI Engine and Maximum global Ancillary Service from Aggregation
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="image gallery-group-1">
+	                     <div class="image-inner">
+	                        <a href="assets/img/solution-02.png" data-lightbox="gallery-group-2">
+	                            <img src="assets/img/solution-02-thumb.png" alt="" />
+	                        </a>
+	                        
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title">ESS Optimization Algorithm</h5>
+	                        <div class="desc">
+	                            
+	                        </div>
+	                    </div>
+	                    
+	                </div>
+	                <div class="image gallery-group-1">
+	                     <div class="image-inner">
+	                        <a href="assets/img/solution-03.png" data-lightbox="gallery-group-2">
+	                            <img src="assets/img/solution-03-thumb.png" alt="" />
+	                        </a>
+	                        
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title">Smart City Energy Platform</h5>
+	                        <div class="desc">
+	                           Smart AMI / AutoDR / Integrated DER / Vehicle2Grid / IoT / AI / Energy Sharing Open Platform/ Energy Transaction with Blockchain Cryptocurrency of Hyperledger fabric
+	                        </div>
+	                    </div>
+	                    
+	                </div>
+	            </div>
+            </div>
+            <!-- end containter -->
+        </div>
+        <!-- end #solution -->
         
         
         <!-- begin #contact -->
@@ -291,14 +548,11 @@
             <!-- begin container -->
             <div class="container">
                 <h2 class="content-title">Contact Us</h2>
-                <p class="content-desc">
-                   
-                </p>
                 <!-- begin row -->
                 <div class="row">
                     <!-- begin col-6 -->
-                    <div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
-                        <h4>If you have a project you would like to discuss, get in touch with us.</h3>
+                    <div class="col-sm-6">
+                        <h4>If you have a project you would like to discuss, <br />get in touch with us.</h4>
                        
                         <p>
                             <strong>Westpole Electric Inc.</strong><br />
@@ -311,39 +565,26 @@
                         </p>
                     </div>
                     <!-- end col-6 -->
-                    <!-- begin col-6 -->
                     
-                    <!-- 
-                    <div class="col-md-6 form-col" data-animation="true" data-animation-type="fadeInRight">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Name <span class="text-theme">*</span></label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Email <span class="text-theme">*</span></label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Message <span class="text-theme">*</span></label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control" rows="10"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3"></label>
-                                <div class="col-md-9 text-left">
-                                    <button type="submit" class="btn btn-theme btn-block">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="col-sm-6" style="text-align:right;" >
+                    	<p>
+							<a href="http://www.destin.co.kr/" target="_blank" class="btn btn-outlink">
+								<img th:src="@{/assets/img/logo-destin.png }" />
+							</a>
+						</p>
+						
+						<p>
+							<a href="https://www.incell.kr/kr/index.php" target="_blank" class="btn btn-outlink">
+								<img th:src="@{/assets/img/logo-incell.png }" />
+							</a>
+						</p>
+						
+						<p>
+							<a href="https://aict.snu.ac.kr/" target="_blank" class="btn btn-outlink">
+								<img th:src="@{/assets/img/logo-aict-en.jpg }" />
+							</a>
+						</p>
                     </div>
-                     -->
-                    <!-- end col-6 -->
                 </div>
                 <!-- end row -->
             </div>
@@ -352,6 +593,14 @@
         <!-- end #contact -->
         
          <th:block th:replace="westpole/fragments/footer"></th:block>
+         
+         <script>
+         $(document).ready(function() {
+        	 Gallery.init("gallery");
+             Gallery.init("gallery2"); 
+         });
+         
+         </script>
 	</div>
 
 	

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
@@ -10,21 +11,32 @@
 	<meta content="" name="description" />
 	<meta content="" name="author" />
 	
-	<!-- ================== BEGIN BASE CSS STYLE ================== -->
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
-	<link th:href="@{/assets/plugins/font-awesome/css/font-awesome.min.css}" rel="stylesheet" />
-	<link th:href="@{/assets/css/animate.min.css}" rel="stylesheet" />
-	<link th:href="@{/assets/css/style.min.css}" rel="stylesheet" />
-	<link th:href="@{/assets/css/style-responsive.min.css}" rel="stylesheet" />
-	<link th:href="@{/assets/css/theme/default.css}" id="theme" rel="stylesheet" />
-	<!-- ================== END BASE CSS STYLE ================== -->
+	<th:block th:replace="westpole/fragments/header"></th:block>
 	
-	<!-- ================== BEGIN BASE JS ================== -->
-	<script th:href="@{/assets/plugins/pace/pace.min.js}"></script>
-	<!-- ================== END BASE JS ================== -->
+	<style>
+		.login_message {line-height:50px; font-size:14px; margih-top:10px; font-color:#fff;}
+	</style>
+	
+	<script th:inline="javascript">
+	
+	    /*<![CDATA[*/
+	    	
+	    $(document).ready(function() {
+	    	
+	    	var authenticated = [[ ${ #authorization.expr( 'isAuthenticated()') }]];
+	    	
+			if(authenticated) {
+				location.href="/";
+			} 
+	    	
+	    });
+	    /*]]>*/
+	    
+	</script>
+	
+	
 </head>
-<body>
+<body class="pace-top">
 
 	<!-- begin #page-container -->
 	<div id="page-container" class="fade">
@@ -33,49 +45,46 @@
             <!-- begin brand -->
             <div class="login-header">
                 <div class="brand">
-                    <img th:src="@{/assets/img/wp-logo.png}" style="width:40px; height:36px;float:left;margin-right: 10px; margin-top:4px;" />
-                    <a href="/" style="font-color:#777; font-size:18px;'"> Westpole Electronic Inc.</a>
+                    <img th:src="@{/assets/img/wp-logo.png}" class="logo"/>
+                    <a href="/"> Westpole Electronic Inc.</a>
                 </div>
             </div>
             <!-- end brand -->
             <div class="login-content">
-                <form name="loginForm" action="/login/submit" method="POST" class="margin-bottom-0">
+                <form name="loginForm" action="/login" method="post" class="margin-bottom-0">
+                	
+                	<p th:if="${loginError}" class="login_message"><i class="fa fa-check"></i> Wrong username or password.</p>
                     <div class="form-group m-b-20">
-                        <input type="text" class="form-control input-lg" placeholder="ID" name="id" />
+                        <input type="text" class="form-control input-lg" placeholder="User ID" name="username" autofocus="autofocus" />
                     </div>
                     <div class="form-group m-b-20">
                         <input type="password" class="form-control input-lg" placeholder="Password" name="password" />
                     </div>
+                    
+                    
                     <div class="login-buttons">
                         <button type="submit" class="btn btn-success btn-block btn-lg">LOGIN</button>
                     </div>
+                    
+                    
+                    <div class="login-buttons">
+                    	<br /><button type="button" class="btn btn-default btn-block btn-lg" onclick="location.href='http://hiworks.westpole.biz/';">GROUPWARE</button>
+                    </div>
                 </form>
                 
-                <i class="fa fa-check"></i> <span style="line-height:50px; font-size:14px; margih-top:10px; font-color:#fff;" th:text="${message}"></span>
+                
             </div>
         </div>
         <!-- end login -->
 	</div>
 	<!-- end page container -->
-	
-	<!-- ================== BEGIN BASE JS ================== -->
-	<script th:src="@{/assets/plugins/jquery/jquery-1.9.1.min.js}"></script>
-	<script th:src="@{/assets/plugins/jquery/jquery-migrate-1.1.0.min.js}"></script>
-	<script th:src="@{/assets/plugins/bootstrap/js/bootstrap.min.js}"></script>
-	<!--[if lt IE 9]>
-		<script src="assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="assets/crossbrowserjs/respond.min.js"></script>
-		<script src="assets/crossbrowserjs/excanvas.min.js"></script>
-	<![endif]-->
-	<script th:src="@{/assets/plugins/jquery-cookie/jquery.cookie.js}"></script>
-	<script th:src="@{/assets/plugins/scrollMonitor/scrollMonitor.js}"></script>
-	<script th:src="@{/assets/js/apps.min.js}"></script>
-	<!-- ================== END BASE JS ================== -->
-	
-	<script>
-		$(document).ready(function() {
-			App.init();
-		});
+	<script>    
+    $(document).ready(function() {
+        App.init();
+        
+    });
+    
 	</script>
+	
 </body>
 </html>

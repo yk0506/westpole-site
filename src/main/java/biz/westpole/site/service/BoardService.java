@@ -21,7 +21,7 @@ public class BoardService {
 	private Logger log = LoggerFactory.getLogger(BoardService.class);
 	
 	@Autowired
-	BoardMapper boardMapper;
+	private BoardMapper boardMapper;
 	
 	public ArrayList<BoardDTO> selectAllBulletin() throws Exception {
 		return boardMapper.selectAllBulletin();

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import biz.westpole.site.domain.BoardDTO;
 import biz.westpole.site.domain.CommonMessageDTO;
+import biz.westpole.site.domain.LoginDTO;
 import biz.westpole.site.service.BoardService;
 import biz.westpole.site.service.MainService;
 
@@ -34,15 +36,13 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@Autowired
-	private MainService mainService;
-
 	@GetMapping("/board/list")
-	public String list(@ModelAttribute("params") BoardDTO params, Model model ) {
+	public String list(Authentication authentication, @ModelAttribute("params") BoardDTO params, Model model ) {
 		
 		try {
 			
 			ArrayList<BoardDTO> bltnList = boardService.selectBulletinList(params);
+			
 			
 			model.addAttribute("bltnList", bltnList);
 			model.addAttribute("params", params);
@@ -78,9 +78,9 @@ public class BoardController {
 		try {
 			
 			//추후 아이디연동 추가 			
-			String id = mainService.getCookieUserID(request);
+			//String id = mainService.getCookieUserID(request);
 			
-			model.addAttribute("userId", id);
+			//model.addAttribute("userId", id);
 			
 		} catch(Exception e) {
 			log.error( e.toString() );

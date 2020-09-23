@@ -43,7 +43,7 @@
 	        		</tbody>
 	        	</table>
 	        	
-	        	<div style="float:right;">
+	        	<div th:if="${ #authorization.expr( 'isAuthenticated()' )}" style="float:right;">
 	        		<button type="button" class="btn btn-primary btn-xs" onclick="movePage('/board/write', '')">WRITE</button>
         		</div>
 	        	

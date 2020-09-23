@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="biz.westpole.site.mapper.LoginMapper">
+ 
+ 	<select id="readAccount" parameterType="String" resultType="loginDTO">
+ 		SELECT 	*
+		FROM 	public.account
+		WHERE	username = #{username}
+ 	</select>
+ 	
+ 	<select id="validUserInfo" parameterType="loginDTO" resultType="int">
+ 		SELECT 	count(userid)
+		FROM 	public.account
+		WHERE	username = #{username} AND password = #{password }
+ 	</select>
+ 	
+ 	<insert id="createAccount" parameterType="loginDTO">
+ 		INSERT INTO public.account
+ 		VALUES (#{username }, #{password }, #{nickname }, 0, 0, 0, 1, CURRENT_TIMESTAMP )
+ 	</insert>
+ </mapper>
